@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var port = process.env.PORT || 3000;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -22,9 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/api/todos', index);
+app.use('/api/todos', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -58,6 +57,6 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(port, function(){
-  console.log('Listening on port:' port);
+  console.log('Listening on port:' + port);
 });
 module.exports = app;

@@ -1,3 +1,4 @@
+var todosController = require('../controllers/to_do_controller.js');
 var express = require('express');
 var router = express.Router();
 
@@ -8,10 +9,12 @@ router.get('/', function(req, res, next) {
 
 
 router.route('/')
-	.get(index)
-	.create(index)
+	.get(todosController.index)
+	// .post(todosController.create);
 
-router.route('/:id')
+// router.route('/:id')
+//   .patch(todosController.update)
+//   .delete(todosController.destroy);
 
 
 module.exports = router;
