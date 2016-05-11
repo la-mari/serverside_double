@@ -1,6 +1,13 @@
+var Todo = require('../models/todo.js');
 var toDos = {};
 
  toDos.index = function(req, res){
+ 	Todo.find({}, function(err, toDos){
+ 		if (err){
+ 			throw err
+ 		};
+ 		res.json(toDos);
+ 	})
 
  };
 

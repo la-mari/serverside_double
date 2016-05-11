@@ -4,7 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var port = process.env.PORT || 3000;
+var mongoose = require('mongoose');
+var mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/api/todos';
+// var port = process.env.PORT || 3000;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -56,7 +58,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen(port, function(){
-  console.log('Listening on port:' + port);
-});
+// app.listen(port, function(){
+//   console.log('Listening on port:' + port);
+// });
 module.exports = app;
