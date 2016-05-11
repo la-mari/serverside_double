@@ -8,8 +8,10 @@ var mongoose = require('mongoose');
 var mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/api/todos';
 // var port = process.env.PORT || 3000;
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var routes = require('./routes/index.js');
+// var users = require('./routes/users');
+
+mongoose.connect(mongoUrl);
 
 var app = express();
 
