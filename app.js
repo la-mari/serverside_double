@@ -7,13 +7,24 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/api/todos';
 // var port = process.env.PORT || 3000;
-
 var routes = require('./routes/index.js');
 // var users = require('./routes/users');
+var app = express();
+
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,PATCH,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+};
+app.use(allowCrossDomain);
+
+
 
 mongoose.connect(mongoUrl);
 
-var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
