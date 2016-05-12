@@ -31,17 +31,32 @@ var toDos = {};
 
 toDos.update = function(req, res){
   Todo.findById(req.params.id, function(err, todo) {
-    console.log('hi')
+    console.log('hi');
+    todo.update({
+      title: req.body.title
+    }, function(err, todo){
       if (err) {
         console.log(err);
-      };
+      }
+    });
       res.json({success: true, message: "user updated"});
     });
 };
 
-// toDos.destroy = function(req, res){
-
-// };
+ toDos.destroy = function(req, res){
+  Todo.findById(req.params.id, function(err, todo){
+    if(err){
+      console.log(err);
+    } else {
+      todo.remove(function(err, todo){
+        if(err){
+          console.log(err);
+        }
+      });
+    }
+    res.json({success: true, message: "todo destroyed"});
+  });
+ };
 
 
 module.exports = toDos;

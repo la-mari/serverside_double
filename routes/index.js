@@ -8,7 +8,7 @@ router.route('/')
 
 router.route('/:id')
   .patch(todosController.update)
-//   .delete(todosController.destroy);
+  .delete(todosController.destroy);
 
 
 module.exports = router;
