@@ -6,8 +6,8 @@ router.route('/')
 	.get(todosController.index)
 	.post(todosController.create);
 
-// router.route('/:id')
-//   .patch(todosController.update)
+router.route('/:id')
+  .patch(todosController.update)
 //   .delete(todosController.destroy);
 
 

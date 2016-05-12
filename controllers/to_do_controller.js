@@ -14,6 +14,11 @@ var toDos = {};
  toDos.create = function(req, res){
   var todo = new Todo();
   todo.title = req.body.title;
+  todo.priority = req.body.priority;
+  todo.difficulty = req.body.difficulty;
+  todo.isComplete = req.body.isComplete;
+  todo.updatedAt = req.body.updatedAt;
+  todo.completedOn = req.body.completedOn
 
   todo.save(function(err){
     if (err) {
@@ -24,20 +29,19 @@ var toDos = {};
 };
 
 
-// toDos.update = function(req, res){
-
-// };
+toDos.update = function(req, res){
+  Todo.findById(req.params.id, function(err, todo) {
+    console.log('hi')
+      if (err) {
+        console.log(err);
+      };
+      res.json({success: true, message: "user updated"});
+    });
+};
 
 // toDos.destroy = function(req, res){
 
 // };
 
-  // title: String,
-  // priority: Number,
-  // difficulty: Number,
-  // isComplete: Boolean,
-  // createdAt: Date,
-  // updatedAt: Date,
-  // completedOn: Date
 
 module.exports = toDos;
